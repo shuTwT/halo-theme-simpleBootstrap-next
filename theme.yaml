@@ -1,14 +1,14 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: codeLunatic_simple
+  name: theme-simple_bootstrap
 spec:
   displayName: Simple Bootstrap
   author:
     name: CY
     website: https://halo.cyblogs.top
   description: 使用Bootstrap构建的简洁主题
-  logo:
+  logo: https://halo.run/logo
   website: https://halo.cyblogs.top
   repo: https://github.com/codelunatic/halo-theme-simple-bootstrap
   version: 1.1.0

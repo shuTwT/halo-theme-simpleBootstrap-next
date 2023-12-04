@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <!--主页的用户信息ok-->
+<th:block th:fragment="profile">
 <section id="profile" class="mt-4 bg-white d-xl-block d-none">
     <div class="card">
         <div class="card-header"><i class="fas fa-user mr-2"></i>个人信息</div>
@@ -35,40 +36,38 @@
             <div class="w-100 border-top"></div>
 
             <!--数量统计部分-->
-            <div class="mt-4 w-100 d-flex justify-content-around">
+            <div class="mt-4 w-100 d-flex justify-content-around" th:with="stat=${siteStatsFinder.getStats()}">
                 <div class="w-100 text-center">
                     <small class="text-muted">文章数量</small>
                     <span class="d-block h2 mt-2">
-                        <@postTag method="count">
-                            ${count!}
-                        </@postTag>
+                        <th:block th:text="${stat.post}">
+                        </th:block>
                     </span>
                 </div>
                 <div class="w-100 text-center">
                     <small class="text-muted">分类数量</small>
                     <span class="d-block h2 mt-2">
-                        <@categoryTag method="count">
-                            ${count!}
-                        </@categoryTag>
+                        <th:block th:text="${stat.category}">
+                        </th:block>
                     </span>
                 </div>
                 <div class="w-100 text-center">
                     <small class="text-muted">标签数量</small>
                     <span class="d-block h2 mt-2">
-                        <@tagTag method="count">
-                            ${count!}
-                        </@tagTag>
+                        <th:block th:text="${#lists.size(tagFinder.listAll())}">
+                        </th:block>
                     </span>
                 </div>
             </div>
         </div>
 
         <div class="mb-4 mt-n2">
-            <#if (user.description)?? && user.description?trim != ''>
-                <span class="d-block text-center text-muted px-3">${user.description!}</span>
-            </#if>
+            <th:block th:if="${theme.user.description!=''}">
+                <span class="d-block text-center text-muted px-3" th:text="${user.description}"></span>
+            </th:block>
         </div>
 
     </div>
 </section>
+</th:block>
 </html>

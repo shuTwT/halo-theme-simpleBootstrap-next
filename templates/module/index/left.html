@@ -5,14 +5,15 @@
     <!--列表项-->
     <th:block th:if="${posts.total>0}">
     <!--左边的文章列表-->
-        <#include "list_item.ftl"/>
+        <th:block th:replace="~{list_item}"></th:block>
 
-        <#list posts.content as post>
-            <@listItem post=post />
-        </#list>
+        <th:block th:each="post:${posts.items}">
+            <th:block th:replace="~{list_item::listItem(post)}"></th:block>
+        </th:block>
+
     <!--分页-->
-        <#include "pagination.ftl">
-        <@pagination posts=posts/>
+        <th:block th:replace="~{pagination::pagination(posts)}">
+        </th:block>
     </th:block>
     <th:block th:unless="${posts.total>0}">
         <div class="bg-white mt-5 mb-4">

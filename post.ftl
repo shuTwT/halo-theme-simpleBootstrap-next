@@ -1,5 +1,5 @@
 <#--全文展示界面 ok-->
-<#include "module/layout.ftl">
+<#include "templates/module/layout.ftl">
 <@layout title="${post.title!} | ${blog_title!}">
 
 <#--阅读进度-->
@@ -12,16 +12,16 @@
 <#-- 主容器 -->
     <div class="container px-lg-2 pb-3 bg-white">
         <#-- 面包屑 -->
-        <#include "module/post/breadcrumb.ftl">
+        <#include "templates/module/post/breadcrumb.ftl">
 
         <div class="row">
             <#--左侧-->
             <div id="left" class="col-lg-8 pr-xl-5 px-lg-3 px-4">
-                <#include "module/post/left.ftl">
+                <#include "templates/module/post/left.ftl">
             </div>
             <#-- 右侧 -->
             <div id="right" class="col-lg-4">
-                <#include "module/post/right.ftl">
+                <#include "templates/module/post/right.ftl">
             </div>
         </div>
     </div>

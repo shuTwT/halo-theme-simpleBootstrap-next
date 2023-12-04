@@ -7,18 +7,20 @@
                 <section id="pagination" class="mt-5 mb-lg-3 d-flex justify-content-center">
                     <nav aria-label="切换上下页">
                         <ul class="pagination">
-                            <#--上一页部分-->
+                            <!--上一页部分-->
                             <li th:class="${'page-item '+!pagination.hasPrev?'disabled':''}">
-                                <#if !pagination.hasPrev>
+                                <th:block th:if="${!pagination.hasPrev}">
+
                                     <a class="page-link" tabindex="-1" aria-disabled="true">&laquo;</a>
-                                <#else>
-                                    <a class="page-link" th:href="${pagination.prevPageFullPath!}"
+                                </th:block>
+                                <th:block th:unless="${!pagination.hasPrev}">
+                                    <a class="page-link" th:href="${pagination.prevPageFullPath}"
                                        aria-label="上一页">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
-                                </#if>
+                                </th:block>
                             </li>
-                            <#--页码部分-->
+                            <!--页码部分-->
                             <th:block th:each="number:${pagination.rainbowPages}">
                                 <th:block th:if="${number.isCurrent}">
                                     <li class="page-item active" aria-current="page">
@@ -33,13 +35,13 @@
                                         <a class="page-link" href="${number.fullPath!}">${number.page!}</a>
                                     </li>
                             </th:block>
-                            <#--下一页部分-->
+                            <!--下一页部分-->
                             <li th:class="${'page-item'+!pagination.hasNext?'disable':''}">
-                                <th:block th:if=${!pagination.hasNext}>
+                                <th:block th:if="${!pagination.hasNext}">
                                     <a class="page-link" href="javascript:void(0)" tabindex="-1"
                                        aria-disabled="true">&raquo;</a>
                                 </th:block>
-                                <th:block th:unless=${!pagination.hasNext}>
+                                <th:block th:unless="${!pagination.hasNext}">
                                     <a class="page-link" th:href="${pagination.nextPageFullPath}"
                                        aria-label="下一页">
                                         <span aria-hidden="true">&raquo;</span>
