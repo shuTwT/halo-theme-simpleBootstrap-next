@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="right">
+    <!--主页的右边ok-->
+    <!--个人信息-->
+    <th:block th:replace="~{profile::profile}"></th:block>
+    <th:block th:replace="~{tags::tags}"></th:block>
+</th:block>
+</html>

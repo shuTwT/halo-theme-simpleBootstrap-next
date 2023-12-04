@@ -1,7 +1,9 @@
-<#--文章概况-->
-<#include "article_profiles.ftl"/>
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<!--文章概况-->
+<th:block th:replace="~{article_profiles::articleProfiles}"></th:block>
 
-<#--主页的一个文章列表项ok-->
+<!--主页的一个文章列表项ok-->
 <#macro listItem post>
 
     <#--一个列表项-->
@@ -39,3 +41,4 @@
         </div>
     </div>
 </#macro>
+</html>

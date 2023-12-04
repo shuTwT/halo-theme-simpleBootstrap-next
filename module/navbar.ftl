@@ -1,7 +1,8 @@
+<!DOCTYPE html>
+<html lang="zh"  xmlns:th="http://www.thymeleaf.org"  th:fragment="navBar">
 <#--导航栏ok-->
 <section id="navBar" class="border-bottom bg-white">
     <nav class="navbar navbar-expand-lg navbar-light container px-lg-2 py-3">
-
         <a class="navbar-brand font-weight-bold" href="${blog_url!}">
             <#if (options.blog_logo)?? && options.blog_logo?trim != ''>
                 <img src="${options.blog_logo!}" width="30" height="30"
@@ -68,4 +69,6 @@
         </div>
     </nav>
 </section>
+</html>
+
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:halo="http://www.w3.org/1999/xhtml">
+<!--主页的标签部分ok-->
+<th:block th:fragment="tags(tags)">
+    <th:block th:if="${#lists.size(tags)>0}">
+        <section id="tags" class="mt-4 mb-5 bg-white">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-tags mr-2"></i>
+                    所有标签
+                </div>
+                <div class="card-body" th:with="tagCount=0">
+                    <th:block th:each="tag:${tags}">
+                        <div class="tag" th:with="tagCount+=1">
+                            <a href="${tag.fullPath!}" class="text-muted">
+                                <span class="tag-left" th:text="${tag.spec.displayName}"></span>
+                                <span class="tag-right" th:text="tag.postCount"></span>
+                            </a>
+                        </div>
+                    </th:block>
+                    <div class="tag">
+                        <a href="${tags_url}" class="text-muted">
+                            <span class="tag-left">所有标签</span>
+                            <span class="tag-right">
+                            <th:block th:text="${tagCount}">
+                            </th:block>
+                        </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </th:block>
+
+</th:block>
+</html>
