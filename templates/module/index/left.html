@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="left(posts)">
+<th:block th:fragment="left(posts,pagination)">
     <!--主页的左边ok-->
     <!--列表项-->
     <th:block th:if="${posts.total>0}">
     <!--左边的文章列表-->
-        <th:block th:replace="~{list_item}"></th:block>
+        <!--文章概况-->
 
-        <th:block th:each="post:${posts.items}">
-            <th:block th:replace="~{list_item::listItem(post)}"></th:block>
+        <th:block  th:each="post:${posts.items}" >
+            <th:block th:replace="~{::listItem(${post})}"></th:block>
         </th:block>
 
     <!--分页-->
-        <th:block th:replace="~{pagination::pagination(posts)}">
+        <th:block th:replace="${pagination}">
         </th:block>
     </th:block>
     <th:block th:unless="${posts.total>0}">
@@ -25,5 +25,71 @@
             </div>
         </div>
     </th:block>
+</th:block>
+<!--主页的一个文章列表项ok-->
+<th:block th:fragment="listItem(post)">
+    <!--一个列表项-->
+    <div class="list-item border-bottom pt-3">
+
+        <div class="d-flex align-items-center justify-content-between">
+
+            <div class="item-left d-flex flex-column" style="justify-content: space-evenly;">
+
+                <!--文章标题-->
+                <a th:href="${post.status.permalink}" class="text-body">
+                    <h4 class="p-0 m-0 font-weight-bold text-break" th:text="${post.spec.title}">
+                    </h4>
+                </a>
+
+                <!--文章摘要-->
+                <div class="d-flex align-items-center">
+                    <!--小屏幕缩略图-->
+                    <th:block th:if="${post.spec.cover!=''}">
+                        <i style="background-image: url('${post.thumbnail!}'); background-size: cover; flex: none;" class="mr-3 thumbnail-img-sm shadow-sm rounded-lg"></i>
+                    </th:block>
+                    <!--文章摘要-->
+                    <div class="post-summary text-muted text-break" th:text="${post.spec.excerpt.raw}"></div>
+                </div>
+
+                <!--文章概况-->
+                <th:block th:replace="~{::articleProfiles(${post})}"></th:block>
+            </div>
+
+            <!--大屏幕缩略图-->
+            <th:block th:if="${post.spec.cover!=''}">
+                <i style="background-image: url('${post.thumbnail}'); background-size: cover; flex: none;" class="ml-3 thumbnail-img-lg shadow-sm rounded-lg"></i>
+            </th:block>
+
+        </div>
+    </div>
+</th:block>
+<th:block th:fragment="articleProfiles(post)">
+    <small>
+        <!--标签-->
+        <th:block th:if="${#lists.size(post.spec.tags)>0}">
+        <span class="mr-3 font-weight-bold d-md-inline d-none">
+                    <i class="fas fa-tags mr-1"></i>
+                    <th:block th:each="tag:${post.tags}">
+                        <a class="text-body mr-1"
+                           th:href="${tag.status.permalink}" th:text="${tag.spec.displayName}"></a>
+                    </th:block>
+            </span>
+        </th:block>
+
+        <!--日期-->
+        <span class="mr-3">
+            <i class="fas fa-calendar-alt mr-2"></i>
+            <th:block th:text="${#dates.format(post.metadata.creationTimestamp,'yyyy年MM月dd日')}">
+
+            </th:block>
+        </span>
+
+        <!--多少次浏览-->
+        <span>
+            <i class="fas fa-eye mr-2"></i>
+            <th:block th:text="${post.stats.visit}">
+            </th:block>
+        </span>
+    </small>
 </th:block>
 </html>

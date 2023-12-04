@@ -3,7 +3,96 @@
 <th:block th:fragment="right">
     <!--主页的右边ok-->
     <!--个人信息-->
-    <th:block th:replace="~{profile::profile}"></th:block>
-    <th:block th:replace="~{tags::tags}"></th:block>
+    <th:block th:replace="~{::profile}"></th:block>
+    <th:block th:replace="~{::tags(tags=${tagFinder.listAll()})}"></th:block>
+</th:block>
+<!--主页的用户信息ok-->
+<th:block th:fragment="profile">
+    <section id="profile" class="mt-4 bg-white d-xl-block d-none">
+        <div class="card">
+            <div class="card-header"><i class="fas fa-user mr-2"></i>个人信息</div>
+            <div class="card-body d-flex flex-column align-items-center">
+                <!--头像和个人信息-->
+                <div class="mt-4 mb-4point5 w-100 d-flex justify-content-center">
+                    <!--头像部分-->
+                    <div class="w-50 text-right mr-3">
+                        <i
+                                th:style="'display: inline-block;width: 6.5rem; height: 6.5rem;background-image: url(\''+${theme.config.user_info.avatar}+'\') ;background-size: cover;'"
+                                class="rounded-circle"></i>
+                    </div>
+                    <!--个人信息部分-->
+                    <div class="w-50 text-left ml-3 d-flex flex-column justify-content-center">
+                        <span class="h4 d-block" th:text="${theme.config.user_info.nickname}"></span>
+                        <th:block th:if="${theme.config.user_info.user_location!=''}">
+                        <span class="text-muted text-truncate">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+                            <th:block th:text="${theme.config.user.user_location}">
+
+                            </th:block>
+                        </span>
+                        </th:block>
+
+                    </div>
+                </div>
+
+                <!--分割线-->
+                <div class="w-100 border-top"></div>
+
+                <!--数量统计部分-->
+                <div class="mt-4 w-100 d-flex justify-content-around" th:with="stat=${siteStatsFinder.getStats()}">
+                    <div class="w-100 text-center">
+                        <small class="text-muted">文章数量</small>
+                        <span class="d-block h2 mt-2">
+                        <th:block th:text="${stat.post}">
+                        </th:block>
+                    </span>
+                    </div>
+                    <div class="w-100 text-center">
+                        <small class="text-muted">分类数量</small>
+                        <span class="d-block h2 mt-2">
+                        <th:block th:text="${stat.category}">
+                        </th:block>
+                    </span>
+                    </div>
+                    <div class="w-100 text-center">
+                        <small class="text-muted">标签数量</small>
+                        <span class="d-block h2 mt-2">
+                        <th:block th:text="${#lists.size(tagFinder.listAll())}">
+                        </th:block>
+                    </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-4 mt-n2">
+
+            </div>
+
+        </div>
+    </section>
+</th:block>
+<!--主页的标签部分ok-->
+<th:block th:fragment="tags(tags)">
+    <th:block th:if="${#lists.size(tags)>0}">
+        <section id="tags" class="mt-4 mb-5 bg-white">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-tags mr-2"></i>
+                    所有标签
+                </div>
+                <div class="card-body" >
+                    <th:block th:each="tag:${tags}">
+                        <div class="tag" >
+                            <a href="${tag.fullPath!}" class="text-muted">
+                                <span class="tag-left" th:text="${tag.spec.displayName}"></span>
+                                <span class="tag-right" th:text="tag.postCount"></span>
+                            </a>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </section>
+    </th:block>
+
 </th:block>
 </html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<!--存档界面左边ok-->
+<th:block th:fragment="left(archives)">
+    <div class="pr-lg-5 mt-lg-2 mt-3">
+        <th:block th:each="archive: ${archives.items}">
+            <div class="title-list-item">
+                <th:block th:each="month:${archive.months}">
+                    <div class="d-flex mb-3">
+                        <i class="user-avatar rounded-circle"
+                           th:style="'display: block;width: 2.5rem; height: 2.5rem;background-image: url('+${theme.config.user_info.avatar}+');background-size: cover;'"></i>
+                        <div class="dialogue-box rounded">
+                            <h3 th:id="${archive.year}+'年'+${month.month}+'月'" class="section-title">
+                                <span th:text="${archive.year}+'年'+${month.month}+'月'"></span> 归档
+                            </h3>
+                        </div>
+                    </div>
+                    <!--列表项-->
+                    <ul class="title-list">
+                        <th:block th:each="post:${month.posts}">
+                            <li class="d-flex flex-sm-row flex-column justify-content-between pr-3">
+                                <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+                                <small class="text-muted"
+                                       th:text="${#dates.format(post.metadata.creationTimestamp,'yyyy年MM月d日')}"></small>
+                            </li>
+                        </th:block>
+                    </ul>
+                </th:block>
+            </div>
+        </th:block>
+    </div>
+</th:block>
+</html>

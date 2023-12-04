@@ -91,6 +91,12 @@ spec:
       label: 用户信息
       formSchema:
         - $formkit: text
+          name: avatar
+          label: 头像地址
+        - $formkit: text
+          name: nickname
+          label: 昵称
+        - $formkit: text
           name: user_location
           label: 位置信息
           type: text

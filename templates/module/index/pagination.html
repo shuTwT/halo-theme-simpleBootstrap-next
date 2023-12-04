@@ -2,47 +2,48 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="pagination(posts)">
     <!--主页的分页ok-->
-    <th:block th:if="posts.total>0">
+    <th:block th:if="${posts.total > 0}">
             <th:block method="index" page="${posts.number}" total="${posts.totalPages}" display="3">
                 <section id="pagination" class="mt-5 mb-lg-3 d-flex justify-content-center">
                     <nav aria-label="切换上下页">
                         <ul class="pagination">
                             <!--上一页部分-->
-                            <li th:class="${'page-item '+!pagination.hasPrev?'disabled':''}">
-                                <th:block th:if="${!pagination.hasPrev}">
-
+                            <li th:class="'page-item '+${!posts.hasPrevious?'disabled':''}">
+                                <th:block th:if="${!posts.hasPrevious}">
                                     <a class="page-link" tabindex="-1" aria-disabled="true">&laquo;</a>
                                 </th:block>
-                                <th:block th:unless="${!pagination.hasPrev}">
-                                    <a class="page-link" th:href="${pagination.prevPageFullPath}"
+                                <th:block th:unless="${!posts.hasPrevious}">
+                                    <a class="page-link" th:href="${posts.prevUrl}"
                                        aria-label="上一页">
                                         <span aria-hidden="true">&laquo;</span>
                                     </a>
                                 </th:block>
                             </li>
                             <!--页码部分-->
-                            <th:block th:each="number:${pagination.rainbowPages}">
-                                <th:block th:if="${number.isCurrent}">
+                            <th:block th:each="number:${posts.totalPages}">
+                                <th:block th:if="${number==posts.page}">
                                     <li class="page-item active" aria-current="page">
                                         <a class="page-link" href="javascript:void(0)">
-                                            ${number.page!}
+                                            <th:block th:text="${posts.page}"></th:block>
                                             <span class="sr-only">(current)</span>
                                         </a>
                                     </li>
                                 </th:block>
-                                <th:block th:unless="${number.isCurrent}"></th:block>
+                                <th:block th:unless="${number==posts.page}"></th:block>
                                     <li class="page-item">
-                                        <a class="page-link" href="${number.fullPath!}">${number.page!}</a>
+                                        <a class="page-link" href="">
+                                            <th:block th:text="${number+1}"></th:block>
+                                        </a>
                                     </li>
                             </th:block>
                             <!--下一页部分-->
-                            <li th:class="${'page-item'+!pagination.hasNext?'disable':''}">
-                                <th:block th:if="${!pagination.hasNext}">
+                            <li th:class="'page-item'+${!posts.hasNext?'disable':''}">
+                                <th:block th:if="${!posts.hasNext}">
                                     <a class="page-link" href="javascript:void(0)" tabindex="-1"
                                        aria-disabled="true">&raquo;</a>
                                 </th:block>
-                                <th:block th:unless="${!pagination.hasNext}">
-                                    <a class="page-link" th:href="${pagination.nextPageFullPath}"
+                                <th:block th:unless="${!posts.hasNext}">
+                                    <a class="page-link" th:href="${posts.nextUrl}"
                                        aria-label="下一页">
                                         <span aria-hidden="true">&raquo;</span>
                                     </a>
