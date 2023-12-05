@@ -1,0 +1,46 @@
+<!--存档界面左边ok-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="left(tags)">
+
+</th:block>
+<div class="pr-lg-5 mt-lg-2 mt-3">
+    <th:block th:if="${!#lists.isEmpty(tags)}">
+        <th:block th:each="tag:${tags}">
+            <div class="title-list-item">
+                <div class="d-flex mb-3">
+                    <i class="user-avatar rounded-circle"
+                       style="display: block;
+                       width: 2.5rem; height: 2.5rem;
+                       background-image: url('${user.avatar}');
+                       background-size: cover;"></i>
+                    <div class="dialogue-box rounded">
+                        <h3 th:id="${tag.spec.displayName}" class="section-title">
+                            <span th:text="${tag.spec.displayName}"></span>
+                        </h3>
+                    </div>
+                </div>
+                <!--列表项-->
+                <ul class="title-list" th:with="posts=${postFinder.listByTag(1, 9999,tag.metadata.name)}">
+                    <th:block th:each="post:${posts.items}">
+                        <li class="d-flex flex-sm-row flex-column justify-content-between pr-3">
+                            <a th:href="${post.status.permalink}" th:text="${post.spec.title}"></a>
+                            <small class="text-muted" th:text="${#dates.format(post.metadata.creationTimestamp,'yyyy年MM月dd日')}"></small>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+        </th:block>
+    </th:block>
+    <th:block th:unless="${!#lists.isEmpty(tags)}">
+        <div>
+            <div class="d-flex flex-column align-items-center mt-2 pt-5">
+                <span class="text-muted"><i class="fas fa-inbox fa-7x"></i></span>
+                <span class="text-muted mt-4 mb-5">
+                        还没有添加任何标签，回<a class="font-weight-bold" th:href="${site.url}">主页</a>看看吧
+                    </span>
+            </div>
+        </div>
+    </th:block>
+</div>
+</html>

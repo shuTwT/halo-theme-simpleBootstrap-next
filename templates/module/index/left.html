@@ -45,7 +45,7 @@
                 <div class="d-flex align-items-center">
                     <!--小屏幕缩略图-->
                     <th:block th:if="${post.spec.cover!=''}">
-                        <i style="background-image: url('${post.thumbnail!}'); background-size: cover; flex: none;" class="mr-3 thumbnail-img-sm shadow-sm rounded-lg"></i>
+                        <i style="background-image: url('${post.thumbnail}'); background-size: cover; flex: none;" class="mr-3 thumbnail-img-sm shadow-sm rounded-lg"></i>
                     </th:block>
                     <!--文章摘要-->
                     <div class="post-summary text-muted text-break" th:text="${post.spec.excerpt.raw}"></div>

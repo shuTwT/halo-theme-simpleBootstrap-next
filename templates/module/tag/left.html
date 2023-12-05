@@ -1,0 +1,73 @@
+<!--标签界面左侧ok-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="left(posts,tag,pagination)">
+    <th:block th:if="${posts.size!=0}">
+        <!--无结果-->
+        <div class="alert alert-danger mt-4" role="alert">
+            <i class="far fa-tired mr-2"></i>
+            <th:block th:text="${tag.spec.displayName}"></th:block>
+            标签下啥都没有
+        </div>
+        <!--图标提示-->
+        <div class="d-flex flex-column align-items-center mt-5 pt-5">
+            <span class="text-muted"><i class="fas fa-inbox fa-7x"></i></span>
+            <span class="text-muted mt-4 mb-5">
+                <th:block th:text="${tag.spec.displayName}"></th:block>
+            标签下啥都没有，回<a class="font-weight-bold" href="${blog_url!}">主页</a>看看吧
+        </span>
+        </div>
+    </th:block>
+    <th:block th:unless="${posts.size!=0}">
+        <!--用户位置-->
+        <div class="alert alert-secondary mt-4 mb-2" role="alert">
+            <i class="fa fa-location-arrow mr-2" aria-hidden="true"></i>
+            当前位于
+            <th:block th:text="${tag.spec.displayName}"></th:block>
+            标签下
+        </div>
+
+        <!--列表项-->
+        <th:block th:each="post:${posts.item}">
+            <!--一个列表项-->
+            <div class="list-item border-bottom pt-3">
+
+                <div class="d-flex align-items-center justify-content-between">
+
+                    <div class="item-left d-flex flex-column" style="justify-content: space-evenly;">
+
+                        <!--文章标题-->
+                        <a th:href="${post.status.permalink}" class="text-body">
+                            <h4 class="p-0 m-0 font-weight-bold text-break" th:text="${post.spec.title}">
+                            </h4>
+                        </a>
+
+                        <!--文章摘要-->
+                        <div class="d-flex align-items-center">
+                            <!--小屏幕缩略图-->
+                            <th:block th:if="${post.spec.cover!=''}">
+                                <i style="background-image: url('${post.thumbnail}'); background-size: cover; flex: none;"
+                                   class="mr-3 thumbnail-img-sm shadow-sm rounded-lg"></i>
+                            </th:block>
+                            <!--文章摘要-->
+                            <div class="post-summary text-muted text-break" th:text="${post.spec.excerpt.raw}"></div>
+                        </div>
+
+                        <!--文章概况-->
+                        <th:block th:replace="~{::articleProfiles(${post})}"></th:block>
+                    </div>
+
+                    <!--大屏幕缩略图-->
+                    <th:block th:if="${post.spec.cover!=''}">
+                        <i style="background-image: url('${post.thumbnail}'); background-size: cover; flex: none;"
+                           class="ml-3 thumbnail-img-lg shadow-sm rounded-lg"></i>
+                    </th:block>
+
+                </div>
+            </div>
+        </th:block>
+
+
+    </th:block>
+</th:block>
+</html>

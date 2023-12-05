@@ -1,4 +1,9 @@
-<#--存档界面导航ok-->
+<!--存档界面右边ok-->
+<!--存档界面导航ok-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="right(profile)">
+    <th:block th:replace="${profile}"></th:block>
 <section id="navigation">
     <div class="card mt-lg-4 mt-5">
         <div class="card-header">
@@ -9,3 +14,5 @@
         </ul>
     </div>
 </section>
+</th:block>
+</html>

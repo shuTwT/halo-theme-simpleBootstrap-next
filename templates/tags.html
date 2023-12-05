@@ -1,0 +1,18 @@
+<!--标签列表界面OK-->
+<!DOCTYPE html>
+    <html lang="zh" xmlns:th="http://www.thymeleaf.org"th:replace="~{module/layout::layout(title='标签列表',pageType='tags',head=null,content=~{::content},footer=~{module/footer::footer})}">
+<th:block th:fragment="content">
+    <th:block th:replace="~{module/navbar::navBar}">
+    </th:block>
+    <section id="archives" class="container px-lg-2 pt-3 pb-5 bg-white">
+        <div class="row">
+            <div id="left" class="col-lg-8 pr-lg-5 pl-lg-4 mt-lg-4">
+                <th:block th:replace="~{module/tags/left::left(tags=${tags})}"></th:block>
+            </div>
+            <div id="right" class="col-lg-4">
+                <th:block th:replace="~{module/tags/right::right(profile=~{module/index/right::profile})}"></th:block>
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>
