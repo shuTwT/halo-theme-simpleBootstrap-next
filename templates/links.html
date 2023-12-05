@@ -1,0 +1,49 @@
+<!--链接页面OK-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{module/layout::layout(title='链接',pageType='links',head=null,content=~{::content},footer=~{module/footer::footer})}">
+<th:block th:fragment="content">
+    <link rel="stylesheet" th:href="@{/assets/css/links.css}">
+    <style>
+        /* 链接分类、链接鼠标划过字体颜色 */
+        #linkCategory .category-button:hover, .link-grid .link:hover {
+            color: #dc3545 !important;
+        }
+
+        /* 链接分类被激活的时候 */
+        .category-active {
+            color: #dc3545 !important;
+        }
+    </style>
+    <th:block th:replace="~{module/navbar::navBar}">
+    </th:block>
+    <th:block>
+        <!--这个列表初始化隐藏，用JS来做显示操作-->
+        <th:block th:replace="~{module/links/hide_list::hideList(group=${group})}"></th:block>
+
+        <!--主容器-->
+        <div class="container px-md-2 px-3 pt-3 bg-white">
+            <div id="linkBox" style="display: none;" class="row py-3">
+                <!--左边的分类盒子-->
+                <div id="left" class="col-md-3 mb-4">
+                    <th:block th:replace="~{module/links/left::left}"></th:block>
+                </div>
+                <div id="right" class="col-md-9 mt-md-0 mt-3">
+                    <th:block th:replace="~{module/links/right::right}"></th:block>
+                </div>
+            </div>
+            <div id="emptyBox" style="display: none;">
+                <div>
+                    <div class="d-flex flex-column align-items-center mt-2 pt-5">
+                        <span class="text-muted"><i class="fas fa-inbox fa-7x"></i></span>
+                        <span class="text-muted mt-4 mb-5">
+                        还没有链接，回<a class="font-weight-bold" th:href="${site.url}">主页</a>看看吧
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+    <script th:src="@{/assets/js/links.js}"></script>
+</th:block>
+</html>

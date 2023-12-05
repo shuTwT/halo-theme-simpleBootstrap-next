@@ -1,0 +1,39 @@
+<!--全文展示界面 ok-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"th:replace="~{module/layout::layout(title='文章',pageType='post',head=null,content=~{::content},footer=~{module/footer::footer})}">
+<th:block th:fragment="content">
+    <th:block th:if="theme.config.general.open_read_progress">
+        <!--阅读进度-->
+        <div id="readProgress">
+            <div class="read-progress-bar" role="progressbar" style="width: 0"></div>
+        </div>
+    </th:block>
+    <th:block>
+        <!-- 主容器 -->
+        <div class="container px-lg-2 pb-3 bg-white">
+            <!-- 面包屑 -->
+            <th:block th:replace="~{module/post/breadcrumb::breadcrumb(post=${post})}"></th:block>
+
+            <div class="row">
+                <!--左侧-->
+                <div id="left" class="col-lg-8 pr-xl-5 px-lg-3 px-4">
+                    <th:block th:replace="~{module/post/left::left(post=${post},comment=~{module/comment::comment(post=${post})})}"></th:block>
+                </div>
+                <!-- 右侧 -->
+                <div id="right" class="col-lg-4">
+                    <th:block th:replace="~{module/post/right::right(post=${post})}"></th:block>
+                </div>
+            </div>
+        </div>
+    </th:block>
+    <th:block th:if="${theme.config.mobile_catalog}">
+        <!--手机目录按钮-->
+        <div id="catalogButton" class="d-lg-none d-none">
+            <span><i class="fas fa-bars"></i></span>
+        </div>
+        <!--手机上文章目录后面的蒙版-->
+        <div id="catalogOverBox" class="d-lg-none"></div>
+    </th:block>
+
+</th:block>
+</html>

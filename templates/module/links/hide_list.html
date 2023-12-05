@@ -1,0 +1,23 @@
+<!--链接界面的隐藏列表，用来使用JS做过滤操作 OK-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="hideList(groups)">
+<div id="hideList" style="display: none;">
+    <th:block th:each="group:${groups}">
+        <th:block th:with="links=${group.links}" th:if="${#lists.size(links)>0}">
+        <th:block th:each="link:${links}">
+            <div class="hide-list-item">
+                <input type="hidden" class="hide-link-id" th:value="${link.meatadata.name}"/>
+                <input type="hidden" class="hide-link-name" th:value="${link.spec.displayName}"/>
+                <input type="hidden" class="hide-link-url" th:value="${link.spec.url}"/>
+                <input type="hidden" class="hide-link-logo" th:value="${link.spec.logo}"/>
+                <input type="hidden" class="hide-link-description" th:value="${link.spec.description}"/>
+                <input type="hidden" class="hide-link-team" th:value="${group.spec.displayName}"/>
+                <input type="hidden" class="hide-link-priority" th:value="${link.spec.priority}"/>
+            </div>
+        </th:block>
+        </th:block>
+    </th:block>
+       </div>
+</th:block>
+</html>

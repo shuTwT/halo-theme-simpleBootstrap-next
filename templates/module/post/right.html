@@ -1,0 +1,63 @@
+<!--文章界面右侧ok-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="right(post)">
+<!--相关标签-->
+    <th:block th:if="${!#lists.isEmpty(post.tag)}">
+        <section id="tags" class="mb-lg-4 mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-tags mr-2"></i>相关标签
+                </div>
+                <div class="card-body">
+                    <th:block th:each="tag:${post.tags}">
+                    <div class="tag">
+                        <a th:href="${tag.status.permalink}" class="text-muted">
+                                <span class="tag-item">
+                                    <i class="fas fa-tags mr-1"></i>
+                                    <th:block th:text="${tag.spec.displayName}"></th:block>
+                                </span>
+                        </a>
+                    </div>
+                </th:block>
+            </div>
+            </div>
+        </section>
+    </th:block>
+
+<!--分类部分-->
+    <th:block th:if="${!#lists.isEmpty(post.categories)}">
+        <th:block th:with="posts=${postFinder.listByCategory(1,5,post.categories[0].metadata.name)}">
+            <th:block th:if="${posts.total!=0}">
+                <section id="recommend" class="mb-lg-4 mb-5">
+                    <div class="card">
+                        <div class="card-header"><i class="fas fa-list-ul mr-2"></i>相关推荐</div>
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush">
+                                <th:block th:each="postItem:${posts.items}">
+                                    <a th:href="${post.status.permalink}"
+                                       class="list-group-item list-group-item-action">
+                                        <th:block th:text="${postItemStat.spec.title}"></th:block>
+                                    </a>
+                                </th:block>
+                        </ul>
+                    </div>
+                    </div>
+                </section>
+            </th:block>
+        </th:block>
+    </th:block>
+
+    <!--文章目录-->
+    <!--文章界面的目录部分ok-->
+    <section id="catalogBox" class="d-none">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-book mr-2"></i>文章目录
+            </div>
+            <div id="catalogs" class="card-body p-0 pl-3">
+            </div>
+        </div>
+    </section>
+</th:block>
+</html>

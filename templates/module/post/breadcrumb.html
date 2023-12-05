@@ -1,0 +1,24 @@
+<!--文章界面的面包屑部分ok-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="breadcrumb(post)">
+    <section id="breadcrumb">
+        <nav aria-label="breadcrumb" class="pt-4">
+            <ol class="breadcrumb bg-transparent pl-lg-1 pl-2">
+                <li class="breadcrumb-item">
+                    <a href="${blog_url!}" class="text-dark font-weight-bold">
+                        <i class="fas fa-home"></i> 首页
+                    </a>
+                </li>
+                <th:block th:if="${!#lists.isEmpty(post.categories)}">
+                    <li class="breadcrumb-item">
+                        <a href="${post.categories[0].fullPath!}"
+                           class="text-dark font-weight-bold text-truncate" th:text="${post.categories[0].spec.displayName}"></a>
+                    </li>
+                </th:block>
+            <li class="breadcrumb-item active text-truncate" aria-current="page" th:text="${post.spec.title}"></li>
+            </ol>
+        </nav>
+    </section>
+</th:block>
+</html>
