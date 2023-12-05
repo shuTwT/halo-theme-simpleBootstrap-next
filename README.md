@@ -1,4 +1,5 @@
 # Simple Bootstrap主题
+> 已修改为halo2.0
 
 >  感谢使用Halo Simple Bootstrap主题  
 
