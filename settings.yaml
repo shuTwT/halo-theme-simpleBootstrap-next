@@ -10,33 +10,28 @@ spec:
         - $formkit: color
           name: scrollbar_background_color
           label: 滚动条颜色
-          type: color
-          default: '#6c757d'
+          value: '#6c757d'
           placeholder: '滚动条颜色'
         - $formkit: color
           name: link_color
           label: 链接颜色
-          type: color
-          default: '#007bff'
+          value: '#007bff'
           placeholder: '链接颜色'
         - $formkit: color
           name: hover_color
           label: 鼠标滑过颜色
-          type: color
-          default: '#dc3545'
+          value: '#dc3545'
           placeholder: '鼠标滑过颜色'
         - $formkit: color
           name: progress_color
           label: 阅读进度条颜色
-          type: color
-          default: '#dc3545'
+          value: '#dc3545'
           placeholder: '阅读进度条颜色'
         - $formkit: radio
           name: open_rss
           label: 是否启用RSS
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 启用
@@ -45,9 +40,8 @@ spec:
         - $formkit: radio
           name: open_read_progress
           label: 是否使用阅读进度条
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 显示
@@ -56,9 +50,8 @@ spec:
         - $formkit: radio
           name: link_on_blank_page
           label: 启用新标签页打开链接
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 启用
@@ -67,9 +60,8 @@ spec:
         - $formkit: radio
           name: open_share
           label: 是否启用分享
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 启用
@@ -78,14 +70,12 @@ spec:
         - $formkit: text
           name: twitter_account_share
           label: 转发时@推特账号
-          type: text
-          default: ''
+          value: ''
           placeholder: '转发时@推特账号'
         - $formkit: textarea
           name: journals_description
           label: 日志界面的描述信息
-          type: textarea
-          default: ''
+          value: ''
           placeholder: '日志界面的描述信息'
     - group: user_info
       label: 用户信息
@@ -99,38 +89,32 @@ spec:
         - $formkit: text
           name: user_location
           label: 位置信息
-          type: text
-          default: '北京 海淀'
+          value: '北京 海淀'
           placeholder: '住址'
         - $formkit: text
           name: github_url
           label: Github地址
-          type: text
-          default: ''
+          value: ''
           placeholder: 'Github地址'
         - $formkit: number
           name: qq_number
           label: QQ账号(需开通 https://shang.qq.com/v3/widget.html)
-          type: number
-          default: ''
+          value: ''
           placeholder: 'QQ账号'
         - $formkit: text
           name: weibo_url
           label: 微博链接
-          type: text
-          default: ''
+          value: ''
           placeholder: '微博链接'
         - $formkit: text
           name: twitter_account
           label: 推特账号
-          type: text
-          default: ''
+          value: ''
           placeholder: '推特账号'
         - $formkit: email
           name: email_address
           label: 邮箱地址
-          type: email
-          default: ''
+          value: ''
           placeholder: '邮箱地址'
     - group: code
       label: 代码设置
@@ -138,9 +122,8 @@ spec:
         - $formkit: radio
           name: line_number
           label: 是否显示行号
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 显示
@@ -149,9 +132,8 @@ spec:
         - $formkit: radio
           name: code_copy
           label: 是否启用代码复制
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 开启
@@ -160,9 +142,8 @@ spec:
         - $formkit: radio
           name: code_type
           label: 是否在代码右上角显示代码类型
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 显示
@@ -171,9 +152,8 @@ spec:
         - $formkit: radio
           name: mobile_catalog
           label: 是否在手机上启用目录功能
-          type: radio
           data-type: bool
-          default: true
+          value: true
           options:
             - value: true
               label: 开启
@@ -182,12 +162,10 @@ spec:
         - $formkit: text
           name: code_css_url
           label: 代码样式地址
-          type: text
-          default: 'https://cdn.staticfile.org/highlight.js/9.18.1/styles/github.min.css'
+          value: 'https://cdn.staticfile.org/highlight.js/9.18.1/styles/github.min.css'
           placeholder: '代码样式地址'
         - $formkit: text
           name: code_font_family
           label: 代码字体(注意引号)
-          type: text
-          default: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
+          value: '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
           placeholder: '代码字体'

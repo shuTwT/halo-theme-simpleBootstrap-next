@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.thymeleaf.org" th:fragment="footer" xmlns:halo="http://www.w3.org/1999/xhtml">
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:halo="http://www.w3.org/1999/xhtml">
 <!--页脚ok-->
+<th:block th:fragment="footer">
 <footer class="py-4 border-top bg-white">
     <div class="container d-flex flex-md-row flex-column justify-content-between align-items-center px-lg-2">
         <div>
@@ -11,46 +12,48 @@
         </div>
         <div class="link-info mt-md-0 mt-4">
             <!--RSS-->
-            <th:block th:if="${theme.config.settings.open_rss==true}">
-                <a class="text-dark mr-3" target="_blank" href="${atom_url!}">
+            <th:block th:if="${theme.config.general.open_rss==true}">
+                <a class="text-dark mr-3" target="_blank" th:href="${siteurl}+'/rss.xml'">
                     <i class="fas fa-rss"></i>
                 </a>
             </th:block>
             <!--Github-->
-            <th:block th:if="${theme.config.settings.github_url!=''}">
+            <th:block th:if="${theme.config.user_info.github_url!=''}">
                 <a class="text-dark mr-3" target="_blank"
-                   href="${settings.github_url!}">
+                   th:href="${theme.config.user_info.github_url}">
                     <i class="fab fa-github"></i>
                 </a>
             </th:block>
             <!--QQ账号-->
-            <th:block th:if="${theme.config.settings.qq_number!=''}">
+            <th:block th:if="${theme.config.user_info.qq_number!=''}">
                 <a class="text-dark mr-3" target="_blank"
-                   href="http://wpa.qq.com/msgrd?v=3&uin=${settings.qq_number!}&site=qq&menu=yes">
+                   th:href="'http://wpa.qq.com/msgrd?v=3&uin='+${theme.config.user_info.qq_number}+'&site=qq&menu=yes'">
                     <i class="fab fa-qq"></i>
                 </a>
             </th:block>
             <!--新浪微博-->
-            <th:block th:if="${theme.config.settings.weibo_url!=''}">
+            <th:block th:if="${theme.config.user_info.weibo_url!=''}">
                 <a class="text-dark mr-3" target="_blank"
-                   href="${settings.weibo_url!}">
+                   th:href="${theme.config.user_info.weibo_url}">
                     <i class="fab fa-weibo"></i>
                 </a>
             </th:block>
             <!--推特账号-->
-            <th:block th:if="${theme.config.settings.twitter_account!=''}">
+            <th:block th:if="${theme.config.user_info.twitter_account!=''}">
                 <a class="text-dark mr-3" target="_blank"
-                   href="https://twitter.com/${settings.twitter_account!}">
+                   th:href="'https://twitter.com/'+${theme.config.user_info.twitter_account}">
                     <i class="fab fa-twitter"></i>
                 </a>
             </th:block>
             <!--邮箱地址-->
-            <th:block th:if="${theme.config.settings.email_address!=''}">
-                <a class="text-dark" href="mailto:${settings.email_address!}">
+            <th:block th:if="${theme.config.user_info.email_address!=''}">
+                <a class="text-dark" th:href="'mailto:'+${theme.config.user_info.email_address}">
                     <i class="fas fa-envelope"></i>
                 </a>
             </th:block>
         </div>
     </div>
 </footer>
+
+</th:block>
 </html>

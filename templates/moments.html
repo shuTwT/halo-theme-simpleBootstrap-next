@@ -2,6 +2,8 @@
 <!DOCTYPE html>
     <html lang="zh" xmlns:th="http://www.thymeleaf.org"th:replace="~{module/layout::layout(title='日志',pageType='journals',head=null,content=~{::content},footer=~{module/footer::footer})}">
 <th:block th:fragment="content">
+    <th:block th:replace="~{module/navbar::navBar}">
+    </th:block>
     <!--下方正文部分-->
     <div class="container-fluid" style="background: #f8fafc;" th:with="moments=${momentFinder.listAll()}">
         <div class="container px-md-2 px-0">

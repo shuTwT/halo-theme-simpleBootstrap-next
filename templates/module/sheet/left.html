@@ -1,11 +1,11 @@
 <!--自定义界面的左边OK-->
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
-<th:block th:fragment="left(comment)">
+<th:block th:fragment="left(singlePage,comment)">
     <!--自定义页面标题-->
-    <h1>${sheet.title!}</h1>
+    <h1 th:text="${singlePage.spec.title}"></h1>
     <!--内容-->
-    <div id="content" class="mt-4">${sheet.formatContent!}</div>
+    <div id="content" class="mt-4" th:text="${singlePage.content.content}"></div>
     <!--分享-->
     <div class="social-share-cs my-4"></div>
     <!--评论-->

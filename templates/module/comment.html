@@ -1,14 +1,11 @@
 <!--评论功能OK-->
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:halo="http://www.w3.org/1999/xhtml">
-<th:block th:fragment="comment(post)">
-    <th:block th:if="!post.disallowComment">
+<th:block th:fragment="comment(kind,name)">
         <halo:comment
                 group="content.halo.run"
-                kind="Post"
-                th:attr="name=${post.metadata.name}"
+                th:attr="kind=${kind},name=${name}"
                 colorScheme="'light'"
         ></halo:comment>
-    </th:block>
 </th:block>
 </html>

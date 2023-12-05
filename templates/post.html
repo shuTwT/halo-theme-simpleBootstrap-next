@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="zh" xmlns:th="http://www.thymeleaf.org"th:replace="~{module/layout::layout(title='文章',pageType='post',head=null,content=~{::content},footer=~{module/footer::footer})}">
 <th:block th:fragment="content">
+    <!--  导航栏  -->
+    <th:block th:replace="~{module/navbar::navBar}">
+    </th:block>
     <th:block th:if="theme.config.general.open_read_progress">
         <!--阅读进度-->
         <div id="readProgress">
@@ -17,7 +20,7 @@
             <div class="row">
                 <!--左侧-->
                 <div id="left" class="col-lg-8 pr-xl-5 px-lg-3 px-4">
-                    <th:block th:replace="~{module/post/left::left(post=${post},comment=~{module/comment::comment(post=${post})})}"></th:block>
+                    <th:block th:replace="~{module/post/left::left(post=${post},comment=~{module/comment::comment(kind='Post',name=${post.metadata.name})})}"></th:block>
                 </div>
                 <!-- 右侧 -->
                 <div id="right" class="col-lg-4">

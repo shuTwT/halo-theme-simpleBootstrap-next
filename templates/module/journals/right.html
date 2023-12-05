@@ -4,8 +4,8 @@
 <html lang="zh" xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="right">
     <div class="mt-2">
-        <h1 class="display-4" th:text="${user.nickname}のJournals"></h1>
-        <p class="lead pl-1" th:text="${theme.config.general.journals_description!}"></p>
+        <h1 class="display-4" th:text="${theme.config.user_info.nickname}+'のJournals'"></h1>
+        <p class="lead pl-1" th:text="${theme.config.general.journals_description}"></p>
     </div>
 </th:block>
 </html>

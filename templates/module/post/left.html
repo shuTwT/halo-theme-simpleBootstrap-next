@@ -14,15 +14,15 @@
         </span>
             <span class="mr-3">
             <i class="far fa-calendar mr-2"></i>
-                <th:block th:text="${#dates.format(post.createTime,'yyyy年MM月dd日')}"></th:block>
+                <th:block th:text="${#dates.format(post.spec.publishTime,'yyyy年MM月dd日')}"></th:block>
         </span>
             <span>
             <i class="fas fa-eye mr-2"></i>
-                <th:block th:text="${post.status.visit}"></th:block>次浏览
+                <th:block th:text="${post.stats.visit}"></th:block>次浏览
         </span>
         </small>
         <!-- 文章正文 -->
-        <article class="markdown-body mt-4" th:text="${post.content.content}">
+        <article class="markdown-body mt-4" th:utext="${post.content.content}">
         </article>
     </section>
 
@@ -30,7 +30,7 @@
     <!--文章界面的上下篇文章部分ok-->
     <section id="changePost" class="mb-5">
         <div class="d-flex px-1 flex-md-row flex-column">
-            <th:block th:with="cursor=${postFinder.cursor(postName)}">
+            <th:block th:with="cursor=${postFinder.cursor(post.metadata.name)}">
                 <a id="prePost" th:class="'mr-auto font-weight-bold'+${cursor.previous!=null?:'text-muted'}"
                    th:href="${cursor.previous!=null?cursor.previous.status.permalink:''}">
                     <span class="icon mr-2 d-md-inline d-none">
@@ -71,7 +71,7 @@
     <!-- Todo 用户评论部分,需要补充样式 -->
     <!--文章界面的评论部分ok-->
     <section id="comment" class="mb-5">
-        <th:block th:if="${!post.spec.disallowComment}">
+        <th:block th:if="${post.spec.allowComment}">
             <div>
                 <th:block th:replace="${comment}"></th:block>
             </div>

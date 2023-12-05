@@ -63,8 +63,7 @@
             <link rel="stylesheet" th:href="@{/assets/css/github-markdown.css}">
             <link rel="stylesheet" th:href="@{/assets/css/post.css}">
         <!--代码高亮用到的CSS-->
-            <link href="'https://cdn.staticfile.org/highlight.js/9.18.1/styles/github.min.css'}"
-                  rel="stylesheet">
+            <link th:href="${theme.config.code.code_css_url}" rel="stylesheet">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" integrity="sha256-0EDwznjUTDEicOuZhOL03fpflUqzhkByvhwol8YGkp4=" crossorigin="anonymous">
             <style>
