@@ -1,0 +1,19 @@
+<!--自定义界面OK-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"th:replace="~{module/layout::layout(title=${site.title},pageType='sheet',head=null,content=~{::content},footer=~{module/footer::footer})}">
+<th:block th:fragment="sheet">
+    <div class="container px-lg-2 py-3 bg-white">
+
+        <div class="row">
+            <!--左侧-->
+            <div id="left" class="col-lg-8 pr-xl-5 px-lg-3 px-4 pt-4">
+               <th:block th:replace="~{module/sheet/left::left(comment=~{module/comment::comment(post)})}"></th:block>
+            </div>
+            <!-- 右侧 -->
+            <div id="right" class="col-lg-4">
+                <th:block th:replace="~{module/index/right::right}"></th:block>
+            </div>
+        </div>
+    </div>
+</th:block>
+</html>

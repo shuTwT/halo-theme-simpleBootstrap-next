@@ -1,0 +1,60 @@
+<!--日志界面分页ok-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="pagination">
+    <th:block th:with="journals=${momentFinder.list(1,10)}">
+        <section id="pagination" class="pt-3 d-flex justify-content-center bg-white">
+            <nav aria-label="切换上下页">
+                <ul class="pagination">
+                    <!--上一页部分-->
+                    <li class="page-item <#if !pagination.hasPrev>disabled</#if>">
+                        <th:block th:if="${!journals.hasPrevious}">
+                            <a class="page-link" tabindex="-1"
+                               aria-disabled="true">&laquo;</a>
+                        </th:block>
+                        <th:block th:unless="${!journals.hasPrevious}">
+                            <a class="page-link"
+                               href="${pagination.prevPageFullPath!}"
+                               aria-label="上一页">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </th:block>
+
+                    </li>
+                    <!--页码部分-->
+                    <th:block th:each="number:${journals.totalPages}">
+                        <th:block th:if="${number==posts.page}">
+                            <li class="page-item active" aria-current="page">
+                                <a class="page-link" href="javascript:void(0)">
+                                    <th:block th:text="${journals.page}"></th:block>
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        </th:block>
+                        <th:block th:unless="${number==journals.page}"></th:block>
+                        <li class="page-item">
+                            <a class="page-link" href="">
+                                <th:block th:text="${number+1}"></th:block>
+                            </a>
+                        </li>
+                    </th:block>
+                    <!--下一页部分-->
+                    <li th:class="'page-item'+${!journals.hasNext?'disable':''}">
+                        <th:block th:if="${!journals.hasNext}">
+                            <a class="page-link" href="javascript:void(0)" tabindex="-1"
+                               aria-disabled="true">&raquo;</a>
+                        </th:block>
+                        <th:block th:unless="${!journals.hasNext}">
+                            <a class="page-link" th:href="${journals.nextUrl}"
+                               aria-label="下一页">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </th:block>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </th:block>
+
+</th:block>
+</html>

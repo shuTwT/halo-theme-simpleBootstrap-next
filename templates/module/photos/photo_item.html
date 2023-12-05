@@ -1,0 +1,47 @@
+<!--照片界面的一项OK-->
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="photoItem(photo,group)">
+        <!--一个图片项-->
+        <div class="picture-item my-2 bg-white rounded-bottom">
+            <a th:href="${photo.spec.url}" data-fancybox="images" th:attr="data-caption=${photo.spec.description}">
+                <!--图片详情-->
+                <div class="picture-details">
+                    <!--图片-->
+                    <img class="picture rounded-top" th:src="photo.spec.cover" th:alt="${photo.spec.displayName}" loading="lazy">
+                    <!--图片描述-->
+                    <th:block th:if="${photo.spec.description!=''}">
+                        <div class="picture-description rounded-top" th:text="${photo.spec.description}">
+                            ${photo.description!}
+                        </div>
+                    </th:block>
+                </div>
+            </a>
+            <!--图片信息-->
+            <div class="p-3 picture-bottom">
+                <!--图片标题-->
+                <b class="picture-title" th:text="${photo.spec.displayName}"></b>
+                <!--图片信息-->
+                <div class="picture-info mt-2 text-muted">
+                    <span th:text="${#dates.format(photo.metadata.creationTimestamp,'yyyy年MM月dd日')}"></span>
+                    <span th:text="${photo.spec.description}"></span>
+                </div>
+                <!--图片分组-->
+
+                    <div class="team mt-2">
+                        <span class="picture-team px-2 d-inline-block text-muted border border-secondary rounded-pill"
+                        th:text="${group.spec.displayName}">
+                        </span>
+                    </div>
+
+                <!--喜欢功能-->
+                <div class="like mt-3">
+                    <div class="picture-like text-muted d-inline" data-toggle="tooltip" data-placement="bottom"
+                         title="喜欢功能暂不可用">
+                        <i class="far fa-heart mr-2"></i> 0.00K
+                    </div>
+                </div>
+            </div>
+        </div>
+</th:block>
+</html>
