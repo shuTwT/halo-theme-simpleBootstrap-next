@@ -1,7 +1,7 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-simpleBootstrap-next
+  name: theme-simple-bootstrap-next
 spec:
   displayName: Simple Bootstrap
   author:
@@ -10,8 +10,8 @@ spec:
   description: 使用Bootstrap构建的简洁主题
   logo: https://halo.run/logo
   website: https://halo.cyblogs.top
-  repo: https://github.com/codelunatic/halo-theme-simple-bootstrap
-  settingName: theme-simpleBootstrap-setting
-  configMapName: theme-simpleBootstrap-configMap
+  repo: https://github.com/shuTwT/halo-theme-simpleBootstrap-next
+  settingName: theme-simple-bootstrap-setting
+  configMapName: theme-simple-bootstrap-configMap
   version: "2.0.2"
   require: ">=2.8.0"
