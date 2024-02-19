@@ -1,7 +1,7 @@
 apiVersion: theme.halo.run/v1alpha1
 kind: Theme
 metadata:
-  name: theme-simple-bootstrap-next
+  name: theme-simpleBootstrap
 spec:
   displayName: Simple Bootstrap
   author:
@@ -13,5 +13,5 @@ spec:
   repo: https://github.com/shuTwT/halo-theme-simpleBootstrap-next
   settingName: "theme-simpleBootstrap-setting"
   configMapName: "theme-simpleBootstrap-configMap"
-  version: "2.0.2"
-  require: ">=2.8.0"
+  version: "2.0.3"
+  require: "2.0.0"
