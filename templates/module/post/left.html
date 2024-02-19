@@ -47,7 +47,7 @@
                     </th:block>
                 </a>
                 <a id="nextPost" th:class="'font-weight-bold mt-md-0 mt-3'+${cursor.next!=null?:'text-muted'}"
-                   th:href="${cursor.next!=null?cursor.next.status.permalink:''}">
+                   th:href="@{${cursor.next!=null?cursor.next.status.permalink:''}}">
                     <span class="icon mr-2 d-md-none d-inline">
                         下一篇：
                     </span>

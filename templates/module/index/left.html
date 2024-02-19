@@ -35,7 +35,7 @@
             <div class="item-left d-flex flex-column" style="justify-content: space-evenly;">
 
                 <!--文章标题-->
-                <a th:href="${post.status.permalink}" class="text-body">
+                <a th:href="@{${post.status?.permalink}}" class="text-body">
                     <h4 class="p-0 m-0 font-weight-bold text-break" th:text="${post.spec.title}">
                     </h4>
                 </a>
@@ -70,7 +70,7 @@
                     <i class="fas fa-tags mr-1"></i>
                     <th:block th:each="tag:${post.tags}">
                         <a class="text-body mr-1"
-                           th:href="${tag.status.permalink}" th:text="${tag.spec.displayName}"></a>
+                           th:href="@{${tag.status.permalink}}" th:text="${tag.spec.displayName}"></a>
                     </th:block>
             </span>
         </th:block>

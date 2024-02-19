@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <th:block th:each="tag:${post.tags}">
                     <div class="tag">
-                        <a th:href="${tag.status.permalink}" class="text-muted">
+                        <a th:href="@{${tag.status.permalink}}" class="text-muted">
                                 <span class="tag-item">
                                     <i class="fas fa-tags mr-1"></i>
                                     <th:block th:text="${tag.spec.displayName}"></th:block>
@@ -35,7 +35,7 @@
                         <div class="card-body p-0">
                             <ul class="list-group list-group-flush">
                                 <th:block th:each="postItem:${posts.items}">
-                                    <a th:href="${post.status.permalink}"
+                                    <a th:href="@{${post.status.permalink}}"
                                        class="list-group-item list-group-item-action">
                                         <th:block th:text="${[post].spec.title}"></th:block>
                                     </a>

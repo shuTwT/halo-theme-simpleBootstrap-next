@@ -5,7 +5,7 @@
     <!--自定义页面标题-->
     <h1 th:text="${singlePage.spec.title}"></h1>
     <!--内容-->
-    <div id="content" class="mt-4" th:text="${singlePage.content.content}"></div>
+    <div id="content" class="mt-4" th:utext="${singlePage.content.content}"></div>
     <!--分享-->
     <div class="social-share-cs my-4"></div>
     <!--评论-->

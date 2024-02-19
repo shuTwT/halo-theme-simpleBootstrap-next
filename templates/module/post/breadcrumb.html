@@ -6,13 +6,13 @@
         <nav aria-label="breadcrumb" class="pt-4">
             <ol class="breadcrumb bg-transparent pl-lg-1 pl-2">
                 <li class="breadcrumb-item">
-                    <a th:href="site.url" class="text-dark font-weight-bold">
+                    <a th:href="@{${site.url}}" class="text-dark font-weight-bold">
                         <i class="fas fa-home"></i> 首页
                     </a>
                 </li>
                 <th:block th:if="${!#lists.isEmpty(post.categories)}">
                     <li class="breadcrumb-item">
-                        <a href="${post.categories[0].fullPath!}"
+                        <a th:href="${post.categories[0].status.permalink}"
                            class="text-dark font-weight-bold text-truncate" th:text="${post.categories[0].spec.displayName}"></a>
                     </li>
                 </th:block>

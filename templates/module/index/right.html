@@ -83,7 +83,7 @@
                 <div class="card-body" >
                     <th:block th:each="tag:${tags}">
                         <div class="tag" >
-                            <a href="${tag.fullPath!}" class="text-muted">
+                            <a th:href="@{${tag.status.permalink}}" class="text-muted">
                                 <span class="tag-left" th:text="${tag.spec.displayName}"></span>
                                 <span class="tag-right" th:text="${tag.postCount}"></span>
                             </a>
