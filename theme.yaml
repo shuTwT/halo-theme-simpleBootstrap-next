@@ -11,7 +11,7 @@ spec:
   logo: https://halo.run/logo
   website: https://halo.cyblogs.top
   repo: https://github.com/shuTwT/halo-theme-simpleBootstrap-next
-  settingName: theme-simple-bootstrap-setting
-  configMapName: theme-simple-bootstrap-configMap
+  settingName: "theme-simpleBootstrap-setting"
+  configMapName: "theme-simpleBootstrap-configMap"
   version: "2.0.2"
   require: ">=2.8.0"

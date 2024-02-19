@@ -1,7 +1,7 @@
 apiVersion: v1alpha1
 kind: Setting
 metadata:
-  name: theme-simple-bootstrap-setting
+  name: theme-simpleBootstrap-setting
 spec:
   forms:
     - group: general
